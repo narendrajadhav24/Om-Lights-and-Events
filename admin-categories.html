@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Categories | Om Lights and Events
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f5f5f5;
+
+            color: #111;
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .admin-header {
+
+            background: #111;
+
+            color: white;
+
+            padding: 16px 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .admin-logo {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+        }
+
+
+        .admin-logo span {
+
+            color: #f5a623;
+
+        }
+
+
+        .header-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+
+        .header-button {
+
+            padding: 9px 15px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+        }
+
+
+        .dashboard-button {
+
+            background: white;
+
+            color: #111;
+
+        }
+
+
+        .logout-button {
+
+            background: #d62828;
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 35px 20px;
+
+        }
+
+
+        .page-title {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .page-title h1 {
+
+            font-size: 30px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .page-title p {
+
+            color: #666;
+
+        }
+
+
+        /* =========================
+           FORM CARD
+        ========================== */
+
+        .form-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.06);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .form-card h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .category-form {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr auto;
+
+            gap: 12px;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+        }
+
+
+        input:focus {
+
+            border-color:
+                #f5a623;
+
+        }
+
+
+        .save-button {
+
+            padding:
+                13px 20px;
+
+            background: #111;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .save-button:hover {
+
+            background: #f5a623;
+
+            color: #111;
+
+        }
+
+
+        .cancel-button {
+
+            display: none;
+
+            padding:
+                13px 20px;
+
+            background: #ddd;
+
+            color: #111;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        .message {
+
+            display: none;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .success {
+
+            background: #eafff1;
+
+            color: #15803d;
+
+        }
+
+
+        .error {
+
+            background: #fff0f0;
+
+            color: #c62828;
+
+        }
+
+
+        /* =========================
+           CATEGORY LIST
+        ========================== */
+
+        .list-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.06);
+
+        }
+
+
+        .list-card h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .category-list {
+
+            display: grid;
+
+            gap: 12px;
+
+        }
+
+
+        .category-item {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr auto;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            border:
+                1px solid #eee;
+
+            border-radius: 10px;
+
+        }
+
+
+        .category-name {
+
+            font-weight: 700;
+
+        }
+
+
+        .category-slug {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        .actions {
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+
+
+        .edit-button,
+        .delete-button {
+
+            border: none;
+
+            border-radius: 6px;
+
+            padding:
+                8px 12px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+        }
+
+
+        .edit-button {
+
+            background: #fff3d6;
+
+            color: #9a6200;
+
+        }
+
+
+        .delete-button {
+
+            background: #ffe6e6;
+
+            color: #c62828;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            .admin-header {
+
+                padding:
+                    14px 15px;
+
+            }
+
+
+            .admin-logo {
+
+                font-size: 17px;
+
+            }
+
+
+            .category-form {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .category-item {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .actions {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="admin-header">
+
+
+    <div class="admin-logo">
+
+        OM LIGHTS
+        <span>
+            & EVENTS
+        </span>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <a
+            href="admin-dashboard.html"
+            class="header-button dashboard-button"
+        >
+            Dashboard
+        </a>
+
+
+        <button
+            class="header-button logout-button"
+            id="logoutButton"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h1>
+            Manage Categories
+        </h1>
+
+        <p>
+            Add and manage product categories.
+        </p>
+
+    </div>
+
+
+
+    <div
+        class="message success"
+        id="successMessage"
+    ></div>
+
+
+    <div
+        class="message error"
+        id="errorMessage"
+    ></div>
+
+
+
+    <!-- FORM -->
+
+    <div class="form-card">
+
+        <h2 id="formTitle">
+            Add Category
+        </h2>
+
+
+        <form
+            class="category-form"
+            id="categoryForm"
+        >
+
+            <input
+                type="text"
+                id="categoryName"
+                placeholder="Category name"
+                required
+            >
+
+
+            <input
+                type="text"
+                id="categorySlug"
+                placeholder="category-slug"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="save-button"
+                id="saveButton"
+            >
+                Add Category
+            </button>
+
+
+            <button
+                type="button"
+                class="cancel-button"
+                id="cancelButton"
+            >
+                Cancel
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- LIST -->
+
+    <div class="list-card">
+
+        <h2>
+            Existing Categories
+        </h2>
+
+
+        <div
+            class="category-list"
+            id="categoryList"
+        >
+
+            Loading categories...
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
+
+    const SUPABASE_URL =
+        "https://vazizqotfjxrljhdwlbo.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_ZqJHDTw3NXW0kl51M2SDEg_q3VlGHwp";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    let editingCategoryId = null;
+
+
+    /* =====================================================
+       AUTH CHECK
+    ===================================================== */
+
+    async function checkAdmin() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth
+                .getSession();
+
+
+        if (
+            error ||
+            !data.session
+        ) {
+
+            window.location.href =
+                "admin-login.html";
+
+            return;
+
+        }
+
+
+        const { data: admin, error: adminError } =
+            await supabaseClient.rpc("is_admin");
+
+        if (adminError || admin !== true) {
+            await supabaseClient.auth.signOut();
+            window.location.href = "admin-login.html?error=not-admin";
+            return;
+        }
+
+
+        loadCategories();
+
+    }
+
+
+    /* =====================================================
+       LOAD CATEGORIES
+    ===================================================== */
+
+    async function loadCategories() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("categories")
+                .select("*")
+                .order(
+                    "id",
+                    {
+                        ascending: true
+                    }
+                );
+
+
+        if (error) {
+
+            console.error(error);
+
+            showError(
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        const list =
+            document.getElementById(
+                "categoryList"
+            );
+
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            list.innerHTML = `
+
+                <p>
+                    No categories found.
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+        list.innerHTML = "";
+
+
+        data.forEach(
+            category => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "category-item";
+
+
+                item.innerHTML = `
+
+                    <div class="category-name">
+
+                        ${escapeHTML(
+                            category.name
+                        )}
+
+                    </div>
+
+
+                    <div class="category-slug">
+
+                        ${escapeHTML(
+                            category.slug ||
+                            ""
+                        )}
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="edit-button"
+                            onclick="
+                                editCategory(
+                                    ${category.id}
+                                )
+                            "
+                        >
+                            Edit
+                        </button>
+
+
+                        <button
+                            class="delete-button"
+                            onclick="
+                                deleteCategory(
+                                    ${category.id}
+                                )
+                            "
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                list.appendChild(
+                    item
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       AUTO SLUG
+    ===================================================== */
+
+    document
+        .getElementById(
+            "categoryName"
+        )
+        .addEventListener(
+            "input",
+            function() {
+
+                if (
+                    editingCategoryId
+                ) {
+
+                    return;
+
+                }
+
+
+                thisSlug();
+
+            }
+        );
+
+
+    function thisSlug() {
+
+        const name =
+            document
+                .getElementById(
+                    "categoryName"
+                )
+                .value;
+
+
+        const slug =
+            name
+                .toLowerCase()
+                .trim()
+                .replace(
+                    /[^a-z0-9]+/g,
+                    "-"
+                )
+                .replace(
+                    /^-+|-+$/g,
+                    ""
+                );
+
+
+        document
+            .getElementById(
+                "categorySlug"
+            )
+            .value =
+                slug;
+
+    }
+
+
+    /* =====================================================
+       ADD / UPDATE
+    ===================================================== */
+
+    document
+        .getElementById(
+            "categoryForm"
+        )
+        .addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById(
+                            "categoryName"
+                        )
+                        .value
+                        .trim();
+
+
+                const slug =
+                    document
+                        .getElementById(
+                            "categorySlug"
+                        )
+                        .value
+                        .trim();
+
+
+                try {
+
+
+                    if (
+                        editingCategoryId
+                    ) {
+
+                        const {
+                            error
+                        } =
+                            await supabaseClient
+                                .from(
+                                    "categories"
+                                )
+                                .update({
+
+                                    name:
+                                        name,
+
+                                    slug:
+                                        slug
+
+                                })
+                                .eq(
+                                    "id",
+                                    editingCategoryId
+                                );
+
+
+                        if (error) {
+
+                            throw error;
+
+                        }
+
+
+                        showSuccess(
+                            "Category updated successfully."
+                        );
+
+                    }
+
+                    else {
+
+                        const {
+                            error
+                        } =
+                            await supabaseClient
+                                .from(
+                                    "categories"
+                                )
+                                .insert({
+
+                                    name:
+                                        name,
+
+                                    slug:
+                                        slug
+
+                                });
+
+
+                        if (error) {
+
+                            throw error;
+
+                        }
+
+
+                        showSuccess(
+                            "Category added successfully."
+                        );
+
+                    }
+
+
+                    resetForm();
+
+                    loadCategories();
+
+                }
+
+                catch (error) {
+
+                    console.error(error);
+
+                    showError(
+                        error.message
+                    );
+
+                }
+
+            }
+        );
+
+
+    /* =====================================================
+       EDIT
+    ===================================================== */
+
+    async function editCategory(
+        id
+    ) {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("categories")
+                .select("*")
+                .eq(
+                    "id",
+                    id
+                )
+                .single();
+
+
+        if (error) {
+
+            showError(
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        editingCategoryId =
+            id;
+
+
+        document
+            .getElementById(
+                "categoryName"
+            )
+            .value =
+                data.name || "";
+
+
+        document
+            .getElementById(
+                "categorySlug"
+            )
+            .value =
+                data.slug || "";
+
+
+        document
+            .getElementById(
+                "formTitle"
+            )
+            .textContent =
+                "Edit Category";
+
+
+        document
+            .getElementById(
+                "saveButton"
+            )
+            .textContent =
+                "Update Category";
+
+
+        document
+            .getElementById(
+                "cancelButton"
+            )
+            .style.display =
+                "block";
+
+    }
+
+
+    /* =====================================================
+       DELETE
+    ===================================================== */
+
+    async function deleteCategory(
+        id
+    ) {
+
+        const confirmed =
+            confirm(
+                "Delete this category?"
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("categories")
+                .delete()
+                .eq(
+                    "id",
+                    id
+                );
+
+
+        if (error) {
+
+            showError(
+                "Unable to delete category. Make sure no products are using it."
+            );
+
+            console.error(error);
+
+            return;
+
+        }
+
+
+        showSuccess(
+            "Category deleted successfully."
+        );
+
+
+        loadCategories();
+
+    }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    function resetForm() {
+
+        editingCategoryId =
+            null;
+
+
+        document
+            .getElementById(
+                "categoryForm"
+            )
+            .reset();
+
+
+        document
+            .getElementById(
+                "formTitle"
+            )
+            .textContent =
+                "Add Category";
+
+
+        document
+            .getElementById(
+                "saveButton"
+            )
+            .textContent =
+                "Add Category";
+
+
+        document
+            .getElementById(
+                "cancelButton"
+            )
+            .style.display =
+                "none";
+
+    }
+
+
+    document
+        .getElementById(
+            "cancelButton"
+        )
+        .addEventListener(
+            "click",
+            resetForm
+        );
+
+
+    /* =====================================================
+       LOGOUT
+    ===================================================== */
+
+    document
+        .getElementById(
+            "logoutButton"
+        )
+        .addEventListener(
+            "click",
+            async function() {
+
+                await supabaseClient
+                    .auth
+                    .signOut();
+
+
+                window.location.href =
+                    "admin-login.html";
+
+            }
+        );
+
+
+    /* =====================================================
+       MESSAGES
+    ===================================================== */
+
+    function showSuccess(
+        message
+    ) {
+
+        const element =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        element.textContent =
+            message;
+
+
+        element.style.display =
+            "block";
+
+
+        setTimeout(
+            () => {
+
+                element.style.display =
+                    "none";
+
+            },
+            4000
+        );
+
+    }
+
+
+    function showError(
+        message
+    ) {
+
+        const element =
+            document.getElementById(
+                "errorMessage"
+            );
+
+
+        element.textContent =
+            message;
+
+
+        element.style.display =
+            "block";
+
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ===================================================== */
+
+    function escapeHTML(
+        value
+    ) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+
+            .replace(
+                /</g,
+                "&lt;"
+            )
+
+            .replace(
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    /* =====================================================
+       START
+    ===================================================== */
+
+    checkAdmin();
+
+</script>
+
+
+</body>
+
+</html>

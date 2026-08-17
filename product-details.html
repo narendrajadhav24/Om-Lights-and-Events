@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product details and WhatsApp ordering - Om Lights & Events">
+    <title>Product Details | Om Lights & Events</title>
+    <style>
+        :root{--gold:#f7b84b;--ink:#11100e;--cream:#fffaf1;--muted:#756f66;--line:#e9e1d4;--green:#25d366}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+        button,input,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+        .header{position:sticky;top:0;z-index:20;background:#15130f;color:#fff;border-bottom:1px solid #29251f}
+        .header-inner{max-width:1200px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+        .brand{display:flex;align-items:center;gap:10px}.mark{width:43px;height:43px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:900}.brand strong{display:block;font-size:18px}.brand small{display:block;color:var(--gold);font-size:9px;letter-spacing:2.5px;font-weight:800}
+        .back{color:#d8d0c2;font-size:13px}.back:hover{color:var(--gold)}
+        .page{max-width:1160px;margin:auto;padding:40px 20px 80px}
+        .crumb{font-size:12px;color:#888073;margin-bottom:22px}.crumb a{color:#9b6815}
+        .main-card{display:grid;grid-template-columns:1.05fr .95fr;gap:35px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 18px 55px rgba(40,30,15,.08)}
+        .gallery{min-width:0}.main-image{height:520px;background:linear-gradient(135deg,#24211b,#111);border-radius:18px;overflow:hidden;display:grid;place-items:center;position:relative}.main-image img{width:100%;height:100%;object-fit:cover}.fallback{font-size:75px;color:#ffd36b;filter:drop-shadow(0 0 20px rgba(255,211,107,.5))}
+        .thumbs{display:flex;gap:9px;overflow:auto;margin-top:10px;padding-bottom:4px}.thumb{width:76px;height:70px;border-radius:10px;border:2px solid transparent;overflow:hidden;background:#eee;flex:0 0 auto}.thumb.active{border-color:var(--gold)}.thumb img{width:100%;height:100%;object-fit:cover}
+        .info{padding:10px 8px}.category{display:inline-block;color:#ad6b08;font-size:10px;letter-spacing:2px;font-weight:900;text-transform:uppercase}.info h1{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-1px;margin:8px 0 14px}.price{display:flex;align-items:center;gap:10px;margin:12px 0 18px}.current{font-size:28px;font-weight:900}.old{text-decoration:line-through;color:#999;font-size:14px}.description{color:var(--muted);font-size:15px}.availability{display:inline-flex;margin:18px 0;padding:7px 10px;border-radius:999px;background:#eefaf2;color:#18703a;font-size:12px;font-weight:800}
+        .primary-order{width:100%;padding:15px;border:0;border-radius:12px;background:var(--green);color:#062812;font-weight:900;font-size:15px;margin-bottom:9px}.location-button{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:800}
+        .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px}.panel h2{font-size:21px;margin-bottom:10px}.specs{white-space:pre-line;color:var(--muted);font-size:14px}
+        .video-wrap{aspect-ratio:16/9;background:#171512;border-radius:14px;overflow:hidden;display:grid;place-items:center}.video-wrap iframe{width:100%;height:100%;border:0}.no-video{color:#9d9589;text-align:center}
+        .order-panel{margin-top:22px;background:#171512;color:#fff;border-radius:22px;padding:28px}.order-panel h2{font-size:27px;margin-bottom:5px}.order-panel>p{color:#bdb5a9;font-size:13px;margin-bottom:22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#d6cfc3;font-weight:800}.field input,.field textarea{width:100%;border:1px solid #3b362e;background:#211f1b;color:#fff;border-radius:10px;padding:12px;outline:0}.field input:focus,.field textarea:focus{border-color:var(--gold)}.total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #3a352d;margin-top:18px;padding-top:16px}.total strong{font-size:21px;color:#ffd273}.send{width:100%;border:0;border-radius:11px;padding:14px;margin-top:15px;background:var(--green);color:#062812;font-weight:900}
+        .error{max-width:650px;margin:70px auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:35px;text-align:center}.error h2{margin-bottom:7px}.error a{display:inline-block;margin-top:15px;background:var(--gold);padding:10px 15px;border-radius:9px;font-weight:800}
+        @media(max-width:850px){.main-card{grid-template-columns:1fr}.main-image{height:430px}.details-grid{grid-template-columns:1fr}}
+        @media(max-width:560px){.page{padding:25px 14px 60px}.main-card{padding:12px;border-radius:18px}.main-image{height:340px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.info h1{font-size:31px}.header-inner{padding:11px 14px}}
+    
+.related-section{margin-top:22px;background:#fff;border:1px solid #e9e3d8;border-radius:18px;padding:24px}
+.related-heading span{color:#c98212;font-size:11px;letter-spacing:3px;font-weight:900}
+.related-heading h2{margin:4px 0 18px}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.related-card{border:1px solid #eee7db;border-radius:14px;overflow:hidden;background:#fff;transition:.2s}
+.related-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(30,25,15,.08)}
+.related-image{aspect-ratio:1/1;background:#f7f4ed;display:grid;place-items:center;overflow:hidden}
+.related-image img{width:100%;height:100%;object-fit:cover}
+.related-image span{font-size:36px}
+.related-content{padding:12px}
+.related-content h3{font-size:15px;margin-bottom:5px}
+.related-content strong{color:#c98212}
+.send:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+@media(max-width:800px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.related-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a class="brand" href="index.html">
+            <span class="mark">OM</span>
+            <span><strong>Om Lights</strong><small>AND EVENTS</small></span>
+        </a>
+        <a class="back" href="index.html#products">← Back to products</a>
+    </div>
+</header>
+
+<main class="page">
+    <div class="crumb"><a href="index.html">Home</a> / Product details</div>
+    <div id="productDetails">
+        <div class="error">Loading product…</div>
+    </div>
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://vazizqotfjxrljhdwlbo.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ZqJHDTw3NXW0kl51M2SDEg_q3VlGHwp";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const shopInfo = {
+    name: "Om Lights and Events",
+    phone: "9158143252",
+    whatsapp: "919158143252",
+    address: "Ajinkya Hotel, Kolhar Road, Hutatma Kotwal Nagar, Belapur, Maharashtra 413715",
+    mapLocation: "Ajinkya Hotel, Kolhar Road, Hutatma Kotwal Nagar, Belapur, Maharashtra 413715"
+};
+
+let selectedProduct = null;
+let galleryImages = [];
+
+function escapeHTML(value) {
+    if (value === null || value === undefined) return "";
+    return String(value)
+        .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
+
+function categoryIcon(name) {
+    const text = String(name || "").toLowerCase();
+    if (text.includes("wedding")) return "💍";
+    if (text.includes("stage")) return "🎭";
+    if (text.includes("event")) return "🎉";
+    return "💡";
+}
+
+function priceOf(product) {
+    const d = Number(product.discount_price);
+    const p = Number(product.price);
+    return d > 0 && d < p ? d : p;
+}
+
+function openLocation() {
+    const url = "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(shopInfo.mapLocation);
+    window.open(url, "_blank", "noopener");
+}
+
+function youtubeEmbed(url) {
+    if (!url) return null;
+
+    try {
+        const value = url.trim();
+        const watch = value.match(/[?&]v=([^&]+)/);
+        if (watch) return `https://www.youtube.com/embed/${watch[1]}`;
+
+        const short = value.match(/youtu\.be\/([^?&]+)/);
+        if (short) return `https://www.youtube.com/embed/${short[1]}`;
+
+        const embed = value.match(/youtube\.com\/embed\/([^?&]+)/);
+        if (embed) return `https://www.youtube.com/embed/${embed[1]}`;
+
+        return null;
+    } catch {
+        return null;
+    }
+}
+
+async function loadProduct() {
+    const container = document.getElementById("productDetails");
+    const id = new URLSearchParams(window.location.search).get("id");
+
+    if (!id) {
+        showError("Product not found", "Please select a product from the Products section.");
+        return;
+    }
+
+    const { data: product, error } = await supabaseClient
+        .from("products")
+        .select("*")
+        .eq("id", id)
+        .maybeSingle();
+
+    if (error || !product) {
+        console.error(error);
+        showError("Product not found", "This product may have been removed or is currently unavailable.");
+        return;
+    }
+
+    let categoryName = "Lighting";
+
+    const { data: category } = await supabaseClient
+        .from("categories")
+        .select("name")
+        .eq("id", product.category_id)
+        .maybeSingle();
+
+    if (category) categoryName = category.name;
+
+    const { data: images } = await supabaseClient
+        .from("product_images")
+        .select("image_url,sort_order")
+        .eq("product_id", product.id)
+        .order("sort_order", { ascending: true });
+
+    galleryImages = (images || []).map(item => item.image_url).filter(Boolean);
+
+    if (product.main_image_url && !galleryImages.includes(product.main_image_url)) {
+        galleryImages.unshift(product.main_image_url);
+    }
+
+    selectedProduct = {
+        ...product,
+        category_name: categoryName
+    };
+
+    renderProduct();
+}
+
+function renderProduct() {
+    const p = selectedProduct;
+    const container = document.getElementById("productDetails");
+    const price = priceOf(p);
+    const hasDiscount =
+        Number(p.discount_price) > 0 &&
+        Number(p.discount_price) < Number(p.price);
+
+    const available =
+        p.is_available !== false &&
+        Number(p.stock_quantity || 0) !== 0;
+
+    const mainImage = galleryImages[0] || p.main_image_url || "";
+
+    container.innerHTML = `
+        <div class="main-card">
+            <div class="gallery">
+                <div class="main-image" id="mainImageBox">
+                    ${
+                        mainImage
+                            ? `<img id="mainProductImage" src="${escapeHTML(mainImage)}" alt="${escapeHTML(p.name)}">`
+                            : `<span class="fallback">💡</span>`
+                    }
+                </div>
+
+                <div class="thumbs" id="thumbs"></div>
+            </div>
+
+            <div class="info">
+                <span class="category">${categoryIcon(p.category_name)} ${escapeHTML(p.category_name)}</span>
+                <h1>${escapeHTML(p.name)}</h1>
+
+                <div class="price">
+                    <span class="current">₹${price.toLocaleString("en-IN")}</span>
+                    ${hasDiscount ? `<span class="old">₹${Number(p.price).toLocaleString("en-IN")}</span>` : ""}
+                </div>
+
+                <p class="description">
+                    ${escapeHTML(p.description || "Beautiful lighting product from Om Lights & Events.")}
+                </p>
+
+                <span class="availability">
+                    ${available ? "✓ Available for enquiry" : "Currently unavailable"}
+                </span>
+
+                <button class="primary-order" type="button" onclick="scrollToOrder()">
+                    💬 Order this product
+                </button>
+
+                <button class="location-button" type="button" onclick="openLocation()">
+                    📍 Get Om Lights shop location
+                </button>
+            </div>
+        </div>
+
+        <div class="details-grid">
+            <section class="panel">
+                <h2>Product details</h2>
+                <p class="specs">${escapeHTML(p.specifications || p.description || "Product specifications will be updated soon.")}</p>
+            </section>
+
+            <section class="panel">
+                <h2>How it works</h2>
+                <div class="video-wrap" id="videoBox">
+                    <div class="no-video">Product video will be added soon.</div>
+                </div>
+            </section>
+        </div>
+
+        <section class="related-section" id="relatedSection">
+            <div class="related-heading">
+                <span>MORE TO EXPLORE</span>
+                <h2>You may also like</h2>
+            </div>
+            <div class="related-grid" id="relatedProducts">
+                <div class="no-video">Loading related products…</div>
+            </div>
+        </section>
+
+        <section class="order-panel" id="orderSection">
+            <h2>Order this product on WhatsApp</h2>
+            <p>Enter your details. We will prepare a WhatsApp message with the product and your requirement.</p>
+
+            <form id="orderForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="customerName">Your name *</label>
+                        <input id="customerName" type="text" required placeholder="Enter your name">
+                    </div>
+
+                    <div class="field">
+                        <label for="customerPhone">Phone number *</label>
+                        <input id="customerPhone" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required placeholder="10-digit number">
+                    </div>
+
+                    <div class="field">
+                        <label for="quantity">Quantity *</label>
+                        <input id="quantity" type="number" min="1" value="1" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="customerAddress">Address *</label>
+                        <textarea id="customerAddress" rows="3" required placeholder="Enter delivery / enquiry address"></textarea>
+                    </div>
+                </div>
+
+                <div class="total">
+                    <span>Estimated product total</span>
+                    <strong id="totalPrice">₹${price.toLocaleString("en-IN")}</strong>
+                </div>
+
+                <button class="send" type="submit" ${available ? "" : "disabled"}>
+                    ${available ? "💬 Send order to WhatsApp" : "Product currently unavailable"}
+                </button>
+            </form>
+        </section>
+    `;
+
+    renderGallery();
+    renderVideo();
+    loadRelatedProducts();
+
+    const quantity = document.getElementById("quantity");
+    const total = document.getElementById("totalPrice");
+
+    quantity.addEventListener("input", () => {
+        const qty = Math.max(1, Number(quantity.value) || 1);
+        quantity.value = qty;
+        total.textContent = "₹" + (price * qty).toLocaleString("en-IN");
+    });
+
+    document.getElementById("orderForm").addEventListener("submit", sendWhatsAppOrder);
+}
+
+function renderGallery() {
+    const thumbs = document.getElementById("thumbs");
+    if (!thumbs || galleryImages.length <= 1) return;
+
+    galleryImages.forEach((url, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "thumb" + (index === 0 ? " active" : "");
+        button.innerHTML = `<img src="${escapeHTML(url)}" alt="Product image ${index + 1}">`;
+
+        button.addEventListener("click", () => {
+            document.getElementById("mainProductImage").src = url;
+            thumbs.querySelectorAll(".thumb").forEach(item => item.classList.remove("active"));
+            button.classList.add("active");
+        });
+
+        thumbs.appendChild(button);
+    });
+}
+
+function renderVideo() {
+    const box = document.getElementById("videoBox");
+    if (!box || !selectedProduct.video_url) return;
+
+    const embed = youtubeEmbed(selectedProduct.video_url);
+
+    if (!embed) {
+        box.innerHTML = `
+            <div class="no-video">
+                <a href="${escapeHTML(selectedProduct.video_url)}" target="_blank" rel="noopener">
+                    Open product video →
+                </a>
+            </div>
+        `;
+        return;
+    }
+
+    box.innerHTML = `
+        <iframe
+            src="${embed}"
+            title="How ${escapeHTML(selectedProduct.name)} works"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+    `;
+}
+
+function scrollToOrder() {
+    document.getElementById("orderSection")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+async function sendWhatsAppOrder(event) {
+    event.preventDefault();
+
+    if (!selectedProduct) return;
+
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const quantity = Math.max(1, Number(document.getElementById("quantity").value) || 1);
+    const address = document.getElementById("customerAddress").value.trim();
+
+    if (!name) {
+        alert("Please enter your name.");
+        return;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
+
+    if (!address) {
+        alert("Please enter your address.");
+        return;
+    }
+
+    const unitPrice = priceOf(selectedProduct);
+    const total = unitPrice * quantity;
+
+    const { data: savedOrder, error } = await supabaseClient
+        .from("orders")
+        .insert({
+            product_id: selectedProduct.id,
+            product_name: selectedProduct.name,
+            product_price: unitPrice,
+            quantity,
+            total_amount: total,
+            customer_name: name,
+            customer_phone: phone,
+            customer_address: address,
+            status: "new"
+        })
+        .select("id")
+        .single();
+
+    if (error) {
+        console.error("Order save error:", error);
+        alert("We could not save the enquiry right now. Please try again or contact us on WhatsApp.");
+        return;
+    }
+
+    const message = `Hello ${shopInfo.name} 👋
+
+I want to enquire/order this product.
+
+PRODUCT
+${selectedProduct.name}
+
+CATEGORY
+${selectedProduct.category_name}
+
+UNIT PRICE
+₹${unitPrice.toLocaleString("en-IN")}
+
+QUANTITY
+${quantity}
+
+ESTIMATED TOTAL
+₹${total.toLocaleString("en-IN")}
+
+ORDER ID
+#${savedOrder.id}
+
+CUSTOMER DETAILS
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Please confirm availability and final order details.
+
+Thank you.`;
+
+    const whatsappURL =
+        `https://wa.me/${shopInfo.whatsapp}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank", "noopener");
+}
+
+async function loadRelatedProducts() {
+    const container = document.getElementById("relatedProducts");
+    if (!container || !selectedProduct) return;
+
+    const { data, error } = await supabaseClient
+        .from("products")
+        .select("id,name,price,discount_price,main_image_url,category_id,is_available")
+        .eq("category_id", selectedProduct.category_id)
+        .eq("is_available", true)
+        .neq("id", selectedProduct.id)
+        .order("created_at", { ascending: false })
+        .limit(4);
+
+    if (error || !data || data.length === 0) {
+        container.innerHTML = `<div class="no-video">More products will appear here soon.</div>`;
+        return;
+    }
+
+    container.innerHTML = data.map(product => {
+        const price = priceOf(product);
+        return `
+            <a class="related-card" href="product-details.html?id=${encodeURIComponent(product.id)}">
+                <div class="related-image">
+                    ${product.main_image_url
+                        ? `<img src="${escapeHTML(product.main_image_url)}" alt="${escapeHTML(product.name)}" loading="lazy">`
+                        : `<span>💡</span>`}
+                </div>
+                <div class="related-content">
+                    <h3>${escapeHTML(product.name)}</h3>
+                    <strong>₹${price.toLocaleString("en-IN")}</strong>
+                </div>
+            </a>
+        `;
+    }).join("");
+}
+
+function showError(title, text) {
+    document.getElementById("productDetails").innerHTML = `
+        <div class="error">
+            <h2>${escapeHTML(title)}</h2>
+            <p>${escapeHTML(text)}</p>
+            <a href="index.html#products">Browse products</a>
+        </div>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", loadProduct);
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Om Lights and Events - lights, decorative lighting and event decoration products in Belapur, Shrirampur, Ahilyanagar.">
+    <meta name="keywords" content="Om Lights and Events, lights shop Belapur, wedding lights Belapur, decorative lights, event lighting, Shrirampur lights, Ahilyanagar lighting">
+    <meta property="og:title" content="Om Lights & Events | Light Up Every Moment">
+    <meta property="og:description" content="Lighting, decorative lights and event products from Om Lights & Events, Belapur.">
+    <meta property="og:type" content="website">
+
+    <title>Om Lights & Events | Light Up Every Moment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a class="brand" href="#home" aria-label="Om Lights and Events home">
+        <span class="brand-mark">OM</span>
+        <span class="brand-copy"><strong>Om Lights</strong><small>AND EVENTS</small></span>
+    </a>
+
+    <nav class="main-nav" id="navigation">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+        <a class="header-wa" href="https://wa.me/919158143252" target="_blank" rel="noopener">WhatsApp</a>
+        <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
+    </div>
+</header>
+
+<main>
+    <section class="hero" id="home">
+        <div class="hero-glow glow-one"></div>
+        <div class="hero-glow glow-two"></div>
+        <div class="hero-content">
+            <span class="eyebrow">LIGHTING • DECORATION • EVENTS</span>
+            <h1>Light up your <span>beautiful moments.</span></h1>
+            <p>Explore stylish lights and event-decoration products for weddings, functions, festivals, homes and special occasions.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#products">Explore Products <span>→</span></a>
+                <a class="btn btn-whatsapp" href="https://wa.me/919158143252?text=Hello%20Om%20Lights%20and%20Events%2C%20I%20would%20like%20to%20know%20about%20your%20products." target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+            <div class="hero-trust">
+                <span>✓ Local service</span>
+                <span>✓ Event & home lighting</span>
+                <span>✓ Direct WhatsApp orders</span>
+            </div>
+        </div>
+        <div class="hero-lamp" aria-hidden="true">
+            <div class="lamp-bulb"></div>
+            <div class="lamp-ring"></div>
+            <div class="lamp-stars">✦　✧　✦</div>
+        </div>
+    </section>
+
+    <section class="quick-info">
+        <a class="info-tile" href="tel:9158143252"><span class="info-icon">☎</span><div><small>Call / Enquiry</small><strong>9158143252</strong></div></a>
+        <div class="info-tile"><span class="info-icon">◷</span><div><small>Shop Hours</small><strong>8:00 AM – 10:00 PM</strong></div></div>
+        <button class="info-tile info-button" onclick="openLocation()"><span class="info-icon">⌖</span><div><small>Visit Our Shop</small><strong>Get Location</strong></div></button>
+    </section>
+
+    <section class="section" id="categories">
+        <div class="section-heading">
+            <span class="section-kicker">EXPLORE THE COLLECTION</span>
+            <h2>Shop by category</h2>
+            <p>Choose a category and discover lights made for your occasion.</p>
+        </div>
+        <div class="category-grid" id="categoryList">
+            <div class="skeleton category-skeleton"></div>
+            <div class="skeleton category-skeleton"></div>
+            <div class="skeleton category-skeleton"></div>
+            <div class="skeleton category-skeleton"></div>
+        </div>
+    </section>
+
+    <section class="section section-soft" id="featuredSection">
+        <div class="section-heading compact">
+            <span class="section-kicker">SHOP FAVOURITES</span>
+            <h2>Featured lights</h2>
+            <p>Products selected by Om Lights & Events.</p>
+        </div>
+        <div class="product-grid" id="featuredProducts"><div class="loading-state">Loading featured products…</div></div>
+    </section>
+
+    <section class="section" id="newSection">
+        <div class="section-heading compact">
+            <span class="section-kicker">JUST ARRIVED</span>
+            <h2>New arrivals</h2>
+            <p>Fresh products added to our collection.</p>
+        </div>
+        <div class="product-grid" id="newProducts"><div class="loading-state">Loading new products…</div></div>
+    </section>
+
+    <section class="section" id="products">
+        <div class="section-heading compact">
+            <span class="section-kicker">OUR COLLECTION</span>
+            <h2>All products</h2>
+            <p>Search, filter and choose the product you like.</p>
+        </div>
+
+        <div class="catalog-toolbar">
+            <label class="search-box">
+                <span>⌕</span>
+                <input type="search" id="productSearch" placeholder="Search lights, wedding, decoration…" autocomplete="off">
+            </label>
+            <button class="clear-filter" id="clearFilter" type="button">Show all</button>
+        </div>
+
+        <div class="active-filter" id="activeFilter"></div>
+        <div class="product-grid" id="productGrid">
+            <div class="loading-state">Loading products…</div>
+        </div>
+    </section>
+
+    <section class="why-section" id="about">
+        <div class="why-copy">
+            <span class="section-kicker">WHY OM LIGHTS & EVENTS</span>
+            <h2>Lighting that makes the occasion feel special.</h2>
+            <p>We bring together practical lighting, decorative lights and event-ready products so you can choose the right look for your home or celebration.</p>
+            <div class="why-points">
+                <div><b>01</b><span><strong>Easy selection</strong><small>Browse products and categories online.</small></span></div>
+                <div><b>02</b><span><strong>See before ordering</strong><small>Product photos, details and how-it-works videos.</small></span></div>
+                <div><b>03</b><span><strong>Direct enquiry</strong><small>Send your requirement directly to WhatsApp.</small></span></div>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-orb">✦</div>
+            <h3>Om Lights<br>& Events</h3>
+            <p>Belapur • Shrirampur • Ahilyanagar</p>
+            <button class="btn btn-primary small" onclick="openLocation()">Get Shop Location →</button>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div>
+            <span class="section-kicker">VISIT OR CONTACT US</span>
+            <h2>Ready to light up your event?</h2>
+            <p>Naer by Ajinkya Hotel, Kolhar Road, Hutatma Kotwal Nagar, Belapur, Maharashtra 413715.</p>
+        </div>
+        <div class="contact-actions">
+            <a class="btn btn-primary" href="tel:9158143252">Call 9158143252</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/919158143252" target="_blank" rel="noopener">WhatsApp Us</a>
+            <button class="btn btn-outline" onclick="openLocation()">Get Location</button>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-main">
+        <div>
+            <a class="brand footer-brand" href="#home"><span class="brand-mark">OM</span><span class="brand-copy"><strong>Om Lights</strong><small>AND EVENTS</small></span></a>
+            <p>Lighting • Decoration • Events</p>
+        </div>
+        <div>
+            <h3>Quick links</h3>
+            <a href="#categories">Categories</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <a href="tel:9158143252">9158143252</a>
+            <a href="https://wa.me/919158143252" target="_blank" rel="noopener">WhatsApp</a>
+            <button onclick="openLocation()">Get Location</button>
+        </div>
+    </div>
+    <div class="footer-bottom">
+    <span>© 2026 Om Lights & Events. All rights reserved.</span>
+    <a class="footer-admin-link" href="admin-login.html">Admin</a>
+</div>
+</footer>
+
+<a class="floating-wa" href="https://wa.me/919158143252" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">◉</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>

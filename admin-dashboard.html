@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Dashboard | Om Lights and Events
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f5f5f5;
+
+            color: #111;
+
+        }
+
+
+        .admin-header {
+
+            background: #111;
+
+            color: white;
+
+            padding: 18px 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .admin-logo {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+        }
+
+
+        .admin-logo span {
+
+            color: #f5a623;
+
+        }
+
+
+        .logout-button {
+
+            padding:
+                9px 16px;
+
+            background: #d62828;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+        }
+
+
+        .dashboard {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 35px 20px;
+
+        }
+
+
+        .dashboard-title {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.06);
+
+        }
+
+
+        .stat-card h3 {
+
+            color: #666;
+
+            font-size: 14px;
+
+        }
+
+
+        .stat-number {
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            margin-top: 8px;
+
+        }
+
+
+        .dashboard-actions {
+
+            margin-top: 30px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .action-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            cursor: pointer;
+
+            border:
+                1px solid #eee;
+
+            transition: 0.2s;
+
+        }
+
+
+        .action-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,0.08);
+
+        }
+
+
+        .action-card h3 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .action-card p {
+
+            color: #666;
+
+            font-size: 14px;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .stats,
+            .dashboard-actions {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="admin-header">
+
+    <div class="admin-logo">
+
+        OM LIGHTS
+        <span>
+            & EVENTS
+        </span>
+
+    </div>
+
+
+    <button
+        class="logout-button"
+        id="logoutButton"
+    >
+
+        Logout
+
+    </button>
+
+</header>
+
+
+
+<main class="dashboard">
+
+
+    <div class="dashboard-title">
+
+        <h1>
+            Admin Dashboard
+        </h1>
+
+        <p>
+            Manage your Om Lights and Events website.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <h3>
+                Total Products
+            </h3>
+
+            <div
+                class="stat-number"
+                id="totalProducts"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Available Products
+            </h3>
+
+            <div
+                class="stat-number"
+                id="availableProducts"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Categories
+            </h3>
+
+            <div
+                class="stat-number"
+                id="totalCategories"
+            >
+                0
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="dashboard-actions">
+
+
+        <div
+            class="action-card"
+            onclick="
+                window.location.href =
+                'admin-products.html'
+            "
+        >
+
+            <h3>
+                📦 Products
+            </h3>
+
+            <p>
+                Add, edit and delete products.
+            </p>
+
+        </div>
+
+
+        <div
+    class="action-card"
+    onclick="
+        window.location.href =
+        'admin-categories.html'
+    "
+>
+
+    <h3>
+        📂 Categories
+    </h3>
+
+    <p>
+        Manage product categories.
+    </p>
+
+</div>
+
+
+        <div
+            class="action-card"
+            onclick="
+                window.location.href =
+                'index.html'
+            "
+        >
+
+            <h3>
+                🌐 Website
+            </h3>
+
+            <p>
+                Open customer website.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    const SUPABASE_URL =
+        "https://vazizqotfjxrljhdwlbo.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_ZqJHDTw3NXW0kl51M2SDEg_q3VlGHwp";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    /* =========================
+       CHECK LOGIN
+    ========================== */
+
+    async function checkAdmin() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth
+                .getSession();
+
+
+        if (
+            error ||
+            !data.session
+        ) {
+
+            window.location.href =
+                "admin-login.html";
+
+            return;
+
+        }
+
+
+        loadDashboard();
+
+    }
+
+
+    /* =========================
+       LOAD DASHBOARD
+    ========================== */
+
+    async function loadDashboard() {
+
+
+        const {
+            data: products,
+            error: productsError
+        } =
+            await supabaseClient
+                .from("products")
+                .select(
+                    "id,is_available"
+                );
+
+
+        if (!productsError) {
+
+            document
+                .getElementById(
+                    "totalProducts"
+                )
+                .textContent =
+                    products.length;
+
+
+            document
+                .getElementById(
+                    "availableProducts"
+                )
+                .textContent =
+                    products.filter(
+                        p =>
+                            p.is_available === true
+                    ).length;
+
+        }
+
+
+        /* Orders */
+
+        const {
+            data: orders,
+            error: ordersError
+        } =
+            await supabaseClient
+                .from("orders")
+                .select("id,status")
+                .eq("status", "new");
+
+        if (!ordersError) {
+            document
+                .getElementById("newOrders")
+                .textContent =
+                    (orders || []).length;
+        }
+
+        /* Categories */
+
+        const {
+            data: categories
+        } =
+            await supabaseClient
+                .from("categories")
+                .select("id");
+
+
+        if (categories) {
+
+            document
+                .getElementById(
+                    "totalCategories"
+                )
+                .textContent =
+                    categories.length;
+
+        }
+
+    }
+
+
+    /* =========================
+       LOGOUT
+    ========================== */
+
+    document
+        .getElementById(
+            "logoutButton"
+        )
+        .addEventListener(
+            "click",
+            async function() {
+
+                await supabaseClient
+                    .auth
+                    .signOut();
+
+
+                window.location.href =
+                    "admin-login.html";
+
+            }
+        );
+
+
+    checkAdmin();
+
+</script>
+
+
+</body>
+
+</html>

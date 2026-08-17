@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Login | Om Lights and Events
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111111,
+                    #292929
+                );
+
+        }
+
+
+        .login-container {
+
+            width: 100%;
+
+            max-width: 430px;
+
+            padding: 20px;
+
+        }
+
+
+        .login-card {
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.3);
+
+        }
+
+
+        .logo {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .logo-circle {
+
+            width: 70px;
+
+            height: 70px;
+
+            margin:
+                0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #111111;
+
+            border:
+                3px solid #f5a623;
+
+            color: #f5a623;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+
+            font-size: 20px;
+
+        }
+
+
+        .logo h1 {
+
+            font-size: 25px;
+
+        }
+
+
+        .logo p {
+
+            color: #f5a623;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            font-weight: 700;
+
+            margin-top: 5px;
+
+        }
+
+
+        .login-card h2 {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: 700;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border:
+                1px solid #dddddd;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+        }
+
+
+        input:focus {
+
+            border-color:
+                #f5a623;
+
+        }
+
+
+        .login-button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #111111;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .login-button:hover {
+
+            background: #f5a623;
+
+            color: #111111;
+
+        }
+
+
+        .error-message {
+
+            color: #d62828;
+
+            background: #fff0f0;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+            margin-bottom: 15px;
+
+            display: none;
+
+            font-size: 14px;
+
+        }
+
+
+        .success-message {
+
+            color: #16803c;
+
+            background: #edfff4;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+            margin-bottom: 15px;
+
+            display: none;
+
+            font-size: 14px;
+
+        }
+
+
+        .back-home {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #555555;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <div class="login-card">
+
+
+        <div class="logo">
+
+            <div class="logo-circle">
+                OM
+            </div>
+
+            <h1>
+                Om Lights
+            </h1>
+
+            <p>
+                AND EVENTS
+            </p>
+
+        </div>
+
+
+        <h2>
+            Admin Login
+        </h2>
+
+
+        <div
+            class="error-message"
+            id="errorMessage"
+        ></div>
+
+
+        <div
+            class="success-message"
+            id="successMessage"
+        ></div>
+
+
+        <form
+            id="loginForm"
+        >
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter admin email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+
+                Login to Admin Panel
+
+            </button>
+
+
+        </form>
+
+
+        <a
+            href="index.html"
+            class="back-home"
+        >
+
+            ← Back to Website
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* =========================
+       SUPABASE CONFIG
+    ========================== */
+
+    const SUPABASE_URL =
+        "https://vazizqotfjxrljhdwlbo.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_ZqJHDTw3NXW0kl51M2SDEg_q3VlGHwp";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    const loginError =
+        new URLSearchParams(window.location.search).get("error");
+
+    if (loginError === "not-admin") {
+        document.getElementById("errorMessage").textContent =
+            "Your account is not authorized as an admin.";
+        document.getElementById("errorMessage").style.display = "block";
+    }
+
+    /* =========================
+       LOGIN
+    ========================== */
+
+    document
+        .getElementById("loginForm")
+        .addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                const errorMessage =
+                    document
+                        .getElementById("errorMessage");
+
+
+                const successMessage =
+                    document
+                        .getElementById("successMessage");
+
+
+                errorMessage.style.display =
+                    "none";
+
+                successMessage.style.display =
+                    "none";
+
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth
+                        .signInWithPassword({
+
+                            email:
+                                email,
+
+                            password:
+                                password
+
+                        });
+
+
+                if (error) {
+
+                    console.error(
+                        error
+                    );
+
+
+                    errorMessage.textContent =
+                        error.message;
+
+
+                    errorMessage.style.display =
+                        "block";
+
+                    return;
+
+                }
+
+
+                const { data: admin, error: adminError } =
+                    await supabaseClient.rpc("is_admin");
+
+                if (adminError || admin !== true) {
+                    await supabaseClient.auth.signOut();
+
+                    errorMessage.textContent =
+                        "This account is not authorized to access the Om Lights & Events admin panel.";
+
+                    errorMessage.style.display =
+                        "block";
+
+                    return;
+                }
+
+                successMessage.textContent =
+                    "Login successful. Opening dashboard...";
+
+                successMessage.style.display =
+                    "block";
+
+                setTimeout(
+                    function() {
+                        window.location.href =
+                            "admin-dashboard.html";
+                    },
+                    500
+                );
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>
