@@ -1533,19 +1533,12 @@ async function loadProduct() {
         .from("product_images")
 
         .select(
-            "image_url,sort_order"
+            "image_url"
         )
 
         .eq(
             "product_id",
             product.id
-        )
-
-        .order(
-            "sort_order",
-            {
-                ascending: true
-            }
         );
 
 
@@ -2509,8 +2502,16 @@ async function sendWhatsAppOrder(
        SUPABASE INSERT
     ========================= */
 
+    /*
+     * IMPORTANT:
+     * Customers are allowed to INSERT orders through RLS,
+     * but SELECT on orders is restricted to admins.
+     *
+     * Therefore do NOT call .select().single() after INSERT.
+     * That would turn the request into INSERT ... RETURNING
+     * and require SELECT permission for the anon customer.
+     */
     const {
-        data: savedOrder,
         error
     } = await supabaseClient
 
@@ -2545,7 +2546,7 @@ async function sendWhatsAppOrder(
 
 
             /*
-             * OPTIONAL PRODUCT FIELDS
+             * PRODUCT FIELDS
              */
 
             product_id:
@@ -2562,8 +2563,7 @@ async function sendWhatsAppOrder(
 
 
             /*
-             * EXISTING DUPLICATE
-             * FIELDS IN YOUR TABLE
+             * EXISTING DUPLICATE FIELDS
              */
 
             product_price:
@@ -2578,15 +2578,7 @@ async function sendWhatsAppOrder(
             customer_address:
                 address
 
-        })
-
-
-        .select(
-            "id,order_number"
-        )
-
-
-        .single();
+        });
 
 
 
@@ -2681,7 +2673,7 @@ ESTIMATED TOTAL
 ₹${total.toLocaleString("en-IN")}
 
 ORDER ID
-${savedOrder.order_number}
+${orderNumber}
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -2727,7 +2719,7 @@ Thank you.`;
 
             "<strong>Order ID: " +
             escapeHTML(
-                savedOrder.order_number
+                orderNumber
             ) +
 
             "</strong>";
@@ -2757,25 +2749,15 @@ Thank you.`;
     setTimeout(
         () => {
 
-            window.open(
-                whatsappURL,
-                "_blank",
-                "noopener"
-            );
-
-
-            if (button) {
-
-                button.disabled =
-                    false;
-
-                button.textContent =
-                    "✓ Order sent - Send again";
-
-            }
+            /*
+             * Direct navigation is more reliable on mobile browsers
+             * after an async Supabase request.
+             */
+            window.location.href =
+                whatsappURL;
 
         },
-        400
+        250
     );
 
 }
